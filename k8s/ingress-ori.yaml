@@ -1,0 +1,88 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1beta1","kind":"Ingress","metadata":{"annotations":{"nginx.ingress.kubernetes.io/proxy-read-timeout":"3600","nginx.ingress.kubernetes.io/ssl-redirect":"false","nginx.ingress.kubernetes.io/use-regex":"true"},"name":"tb-ingress","namespace":"thingsboard"},"spec":{"rules":[{"http":{"paths":[{"backend":{"serviceName":"tb-http-transport","servicePort":8080},"path":"/api/v1/.*"},{"backend":{"serviceName":"tb-node","servicePort":8080},"path":"/api/.*"},{"backend":{"serviceName":"tb-node","servicePort":8080},"path":"/swagger.*"},{"backend":{"serviceName":"tb-node","servicePort":8080},"path":"/webjars.*"},{"backend":{"serviceName":"tb-node","servicePort":8080},"path":"/v2/.*"},{"backend":{"serviceName":"tb-node","servicePort":8080},"path":"/static/rulenode/.*"},{"backend":{"serviceName":"tb-node","servicePort":8080},"path":"/oauth2/.*"},{"backend":{"serviceName":"tb-node","servicePort":8080},"path":"/login/oauth2/.*"},{"backend":{"serviceName":"tb-web-ui","servicePort":8080},"path":"/"},{"backend":{"serviceName":"tb-web-ui","servicePort":8080},"path":"/.*"}]}}]}}
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+  creationTimestamp: "2021-07-02T20:55:02Z"
+  generation: 1
+  managedFields:
+  - apiVersion: networking.k8s.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:nginx.ingress.kubernetes.io/proxy-read-timeout: {}
+          f:nginx.ingress.kubernetes.io/ssl-redirect: {}
+          f:nginx.ingress.kubernetes.io/use-regex: {}
+      f:spec:
+        f:rules: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2021-07-02T20:55:02Z"
+  name: tb-ingress
+  namespace: thingsboard
+  resourceVersion: "452197351"
+  selfLink: /apis/extensions/v1beta1/namespaces/thingsboard/ingresses/tb-ingress
+  uid: 321241b3-2a82-4e37-9d7e-acccfbcdda0e
+spec:
+  rules:
+  - http:
+      paths:
+      - backend:
+          serviceName: tb-http-transport
+          servicePort: 8080
+        path: /api/v1/.*
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-node
+          servicePort: 8080
+        path: /api/.*
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-node
+          servicePort: 8080
+        path: /swagger.*
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-node
+          servicePort: 8080
+        path: /webjars.*
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-node
+          servicePort: 8080
+        path: /v2/.*
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-node
+          servicePort: 8080
+        path: /static/rulenode/.*
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-node
+          servicePort: 8080
+        path: /oauth2/.*
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-node
+          servicePort: 8080
+        path: /login/oauth2/.*
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-web-ui
+          servicePort: 8080
+        path: /
+        pathType: ImplementationSpecific
+      - backend:
+          serviceName: tb-web-ui
+          servicePort: 8080
+        path: /.*
+        pathType: ImplementationSpecific
+status:
+  loadBalancer: {}

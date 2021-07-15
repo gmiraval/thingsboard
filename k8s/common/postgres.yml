@@ -21,6 +21,8 @@ metadata:
   namespace: thingsboard
   labels:
     app: postgres
+  annotations:
+    volume.beta.kubernetes.io/storage-class: "nfs-client"
 spec:
   accessModes:
     - ReadWriteOnce
@@ -50,7 +52,7 @@ spec:
             claimName: postgres-pv-claim
       containers:
       - name: postgres
-        imagePullPolicy: Always
+        imagePullPolicy: IfNotPresent
         image: postgres:12
         ports:
         - containerPort: 5432
@@ -85,6 +87,8 @@ spec:
             - postgres
           initialDelaySeconds: 5
           timeoutSeconds: 1
+      imagePullSecrets:
+        - name: regcred
       restartPolicy: Always
 ---
 apiVersion: v1

@@ -30,7 +30,7 @@ spec:
     spec:
       containers:
         - name: server
-          imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           image: zookeeper:3.5
           ports:
             - containerPort: 2181
@@ -48,6 +48,8 @@ spec:
               value: "1"
             - name: ZOO_SERVERS
               value: "server.1=0.0.0.0:2888:3888;0.0.0.0:2181"
+      imagePullSecrets:
+        - name: regcred
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -115,6 +117,8 @@ spec:
               value: "300000"
             - name: KAFKA_LOG_CLEANUP_POLICY
               value: "delete"
+      imagePullSecrets:
+        - name: regcred
       restartPolicy: Always
 ---
 apiVersion: v1
@@ -164,6 +168,8 @@ spec:
       volumes:
         - name: redis-data
           emptyDir: {}
+      imagePullSecrets:
+        - name: regcred
       restartPolicy: Always
 ---
 apiVersion: v1

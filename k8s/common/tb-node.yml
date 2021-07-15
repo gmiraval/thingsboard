@@ -40,8 +40,8 @@ spec:
                 path:  logback.xml
       containers:
         - name: server
-          imagePullPolicy: Always
-          image: thingsboard/tb-node:latest
+          imagePullPolicy: IfNotPresent
+          image: thingsboard/tb-node:3.2.2
           ports:
             - containerPort: 8080
               name: http
@@ -82,6 +82,8 @@ spec:
               port: http
             initialDelaySeconds: 300
             timeoutSeconds: 10
+      imagePullSecrets:
+        - name: regcred
       restartPolicy: Always
 ---
 apiVersion: v1
