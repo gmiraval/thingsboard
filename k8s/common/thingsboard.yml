@@ -120,12 +120,12 @@ metadata:
   name: tb-mqtt-transport
   namespace: thingsboard
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: tb-mqtt-transport
   ports:
   - port: 1883
-    targetPort: 1883
+    nodePort: 31883
     name: mqtt
 ---
 apiVersion: apps/v1
